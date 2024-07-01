@@ -30,11 +30,7 @@
     plex-media-player
     steam
     wireshark
-    gparted
-    cryptsetup
     kitty
-    tree
-    bat
   ];
 
   home.sessionVariables = {
