@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./kitty.nix
+  ];
+
   home.username = "cidr";
   home.homeDirectory = "/home/cidr";
   home.stateVersion = "24.05";
