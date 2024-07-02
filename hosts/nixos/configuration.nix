@@ -186,10 +186,17 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  # Enable OpenGL
-  hardware.graphics = {
+  # Enable OpenGL on 24.11
+  #hardware.graphics = {
+  #  enable = true;
+  #  enable32Bit = true;
+  #};
+  
+  # Enable OpenGL on 24.05
+  hardware.opengl = {
     enable = true;
-    enable32Bit = true;
+    driSupport = true;
+    driSupport32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
