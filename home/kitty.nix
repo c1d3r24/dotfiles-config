@@ -14,12 +14,10 @@
 
       enabled_layouts = "grid";
 
-      map = [
-        "shift+up move_window up"
-        "shift+left move_window left"
-        "shift+right move_window right"
-        "shift+down move_window down"
-      ];
+      map_shift_up = "move_window up";
+      map_shift_left = "move_window left";
+      map_shift_right = "move_window right";
+      map_shift_down = "move_window down";
 
       background = "#1c2b35";
       foreground = "#d0d3d4";
