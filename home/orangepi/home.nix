@@ -20,9 +20,9 @@ in
   home.homeDirectory = "/home/cidr";
   home.stateVersion = "24.05";
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs-unstable.config.allowUnfree = true;
 
-  programs.home-manager.enable = true;
+  programs.home-manager-unstable.enable = true;
 
   programs.git = {
     enable = true;
