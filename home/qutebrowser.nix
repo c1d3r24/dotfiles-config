@@ -1,12 +1,6 @@
 { config, pkgs, ... }:
 
-let
-  quickmarksSource = "${config.home.homeDirectory}/.config/qutebrowser/quickmarks";
-in
 {
-  home.packages = with pkgs; [
-    qutebrowser
-  ];
 
   home.file.".config/qutebrowser/config.py".text = ''
     config.load_autoconfig()
@@ -32,11 +26,5 @@ in
     c.content.blocking.enabled = True
 
     c.content.cookies.accept = 'no-3rdparty'
-  '';
-
-  home.activation.qutebrowser = lib.mkAfter ''
-    if [ -f ${quickmarksSource} ]; then
-      ln -sf ${quickmarksSource} ${config.home.homeDirectory}/.config/qutebrowser/quickmarks
-    fi
   '';
 }
