@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   pkgs = inputs.nixpkgs-unstable.legacyPackages.${config.system};
@@ -10,6 +10,11 @@ in
     ../common/qutebrowser.nix
     ../common/firefox.nix
   ];
+
+  nix = {
+    package = unstablePkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
 
   home.username = "cidr";
   home.homeDirectory = "/home/cidr";
