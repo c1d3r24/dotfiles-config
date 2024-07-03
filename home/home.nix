@@ -21,7 +21,6 @@
   };
 
   home.packages = with pkgs; [
-    firefox
     kate
     qutebrowser
     spotify

@@ -1,17 +1,47 @@
-{ inputs, pkgs, config, ... }: {
+{ inputs, pkgs, config, ... }: 
 
+let
+  bookmarksFile = /mnt/Files/Tech/Linux/bookmarks.nix;
+in
+{
   programs.firefox = {
     enable = true;
+    policies = {
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+      DisablePocket = true;
+      DisableFirefoxAccounts = true;
+      DisableAccounts = true;
+      DisableFirefoxScreenshots = true;
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
+      DontCheckDefaultBrowser = true;
+      DisplayBookmarksToolbar = "always"; # alternatives: "never", "newtab"
+    };
     profiles = {
       default = {
         extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
           ublock-origin
           bitwarden
-          dark-reader
+          darkreader
         ];
+        bookmarks = import bookmarksFile;
+        search = {
+          default = "DuckDuckGo";
+          engines = {
+            DuckDuckGo = {
+              name = "DuckDuckGo";
+              url = "https://duckduckgo.com/?q={searchTerms}";
+            };
+          };
+        };
         settings = {
-          "browser.search.defaultenginename" = "DuckDuckGo";
-          "browser.search.order.1" = "DuckDuckGo";
           "browser.startup.homepage" = "https://start.duckduckgo.com";
           "dom.security.https_only_mode" = true;
           "privacy.trackingprotection.enabled" = true;
@@ -22,7 +52,30 @@
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
           "browser.shell.checkDefaultBrowser" = false;
           "browser.shell.defaultBrowserCheckCount" = 1;
-          "browser.uiCustomization.state" = ''{"placements":{"widget-overflow-fixed-list":[],"nav-bar":["back-button","forward-button","stop-reload-button","home-button","urlbar-container","downloads-button","library-button","ublock0_raymondhill_net-browser-action","_testpilot-containers-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["save-to-pocket-button","developer-button","ublock0_raymondhill_net-browser-action","_testpilot-containers-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":18,"newElementCount":4}'';
+          "browser.uiCustomization.state" = ''{
+            "placements": {
+              "widget-overflow-fixed-list": [],
+              "nav-bar": [
+                "back-button",
+                "forward-button",
+                "stop-reload-button",
+                "home-button",
+                "urlbar-container",
+                "downloads-button",
+                "library-button",
+                "ublock0_raymondhill_net-browser-action",
+                "_testpilot-containers-browser-action"
+              ],
+              "toolbar-menubar": ["menubar-items"],
+              "TabsToolbar": ["tabbrowser-tabs", "new-tab-button", "alltabs-button"],
+              "PersonalToolbar": ["personal-bookmarks"]
+            },
+            "seen": ["save-to-pocket-button", "developer-button", "ublock0_raymondhill_net-browser-action", "_testpilot-containers-browser-action"],
+            "dirtyAreaCache": ["nav-bar", "PersonalToolbar", "toolbar-menubar", "TabsToolbar", "widget-overflow-fixed-list"],
+            "currentVersion": 18,
+            "newElementCount": 4
+          }
+          '';
         };
       };
     };

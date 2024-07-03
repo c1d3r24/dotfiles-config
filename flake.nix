@@ -32,10 +32,16 @@ outputs = { self, nixpkgs, home-manager, ... }@inputs:
           system = system;
           modules = [
             ./hosts/nixos/configuration.nix
+
             home-manager.nixosModules.home-manager {
               home-manager.useUserPackages = true;
-              home-manager.users.cidr.imports = [
-               ./home/home.nix ]; 
+              home-manager.backupFileExtension = "backup";
+              home-manager.extraSpecialArgs = { inherit inputs outputs;};
+              home-manager.users.cidr = {
+               imports = [
+                 ./home/home.nix 
+                ];
+              }; 
             }
           ];
         };

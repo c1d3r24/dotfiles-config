@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  quickmarksFile = "/mnt/Files/Tech/Linux/quickmarks";
+  quickmarksContent = builtins.readFile quickmarksFile;
+in
 {
-
   home.file.".config/qutebrowser/config.py".text = ''
     config.load_autoconfig()
     config.set("colors.webpage.darkmode.enabled", True)
@@ -27,4 +30,6 @@
 
     c.content.cookies.accept = 'no-3rdparty'
   '';
+
+  home.file.".config/qutebrowser/quickmarks".text = quickmarksContent;
 }
