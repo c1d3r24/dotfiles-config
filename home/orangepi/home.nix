@@ -20,7 +20,6 @@ in
   home.homeDirectory = "/home/cidr";
   home.stateVersion = "24.05";
 
-  nixpkgs-unstable.config.allowUnfree = true;
   nixpkgs.config.allowUnfree = true;
 
   programs.home-manager-unstable.enable = true;
