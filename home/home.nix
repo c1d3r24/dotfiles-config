@@ -3,6 +3,7 @@
 {
   imports = [
     ./kitty.nix
+    ./qutebrowser.nix
   ];
 
   home.username = "cidr";
