@@ -32,6 +32,7 @@
 outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, ... }@inputs:
     let
       inherit (self) outputs;
+      
       system = [
         "aarch64-linux"
         "i686-linux"

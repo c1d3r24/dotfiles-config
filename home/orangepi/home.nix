@@ -32,17 +32,9 @@ in
   home.packages = with unstablePkgs; [
     kate
     qutebrowser
-    spotify
-    discord
-    google-chrome
     vlc
-    cura
-    deluge
-    desmume
     tor-browser-bundle-bin
     onlyoffice-bin
-    plex-media-player
-    steam
     wireshark
     kitty
   ];
