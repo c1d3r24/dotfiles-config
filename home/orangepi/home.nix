@@ -22,7 +22,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.home-manager-unstable.enable = true;
+  programs.home-manager.enable = true;
 
   programs.git = {
     enable = true;
