@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 let
-  pkgs = inputs.nixpkgs-unstable.legacyPackages.${config.system};
+  pkgs = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in
 
 {
