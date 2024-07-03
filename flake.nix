@@ -46,7 +46,7 @@ outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable
 		#Nixos Desktop
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
-          system = system;
+          system = "x86_64-linux";
           modules = [
             ./hosts/nixos/configuration.nix
 
@@ -66,7 +66,8 @@ outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable
 
           #Orangepi 
           "cidr@orangepi" = home-manager-unstable.lib.homeManagerConfiguration {
-            pkgs = nixpkgs-unstable.legacyPackages.aarch64-linux;         
+            pkgs = import nixpkgs-unstable {
+              system = "aarch64-linux"; };         
             extraSpecialArgs = {inherit inputs outputs;};
             modules = [ ./home/orangepi/home.nix
             ];
