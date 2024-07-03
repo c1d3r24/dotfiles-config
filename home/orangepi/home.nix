@@ -33,7 +33,6 @@ in
     kate
     qutebrowser
     vlc
-    onlyoffice-bin
     wireshark
     kitty
   ];
