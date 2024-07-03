@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 let
-  pkgs = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+  unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in
 
 {
@@ -12,7 +12,7 @@ in
   ];
 
   nix = {
-    package = pkgs.nix;
+    package = unstablePkgs.nix;
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
@@ -29,7 +29,7 @@ in
     userName = "c1d3r24";
   };
 
-  home.packages = with pkgs; [
+  home.packages = with unstablePkgs; [
     kate
     qutebrowser
     spotify
