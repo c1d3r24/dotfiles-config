@@ -51,6 +51,16 @@ outputs = { self, nixpkgs, home-manager, ... }@inputs:
             extraSpecialArgs = {inherit inputs outputs;};
             modules = [ ./home/home.nix];
            }; 
+
+          #Orangepi 
+          "cidr@orangepi" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.aarch64-linux;         
+            extraSpecialArgs = {inherit inputs outputs;};
+            modules = [ ./home/home.nix
+                        ./home/orangepi.nix
+            ];
+           }; 
+
         };
 
 
