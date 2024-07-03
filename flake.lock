@@ -1,10 +1,10 @@
 {
   "nodes": {
-    "firefox-addons-stable": {
+    "firefox-addons": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs-stable"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -76,10 +76,10 @@
         "type": "github"
       }
     },
-    "home-manager-stable": {
+    "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-stable"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -104,11 +104,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1720042602,
-        "narHash": "sha256-KyGlWXEi4xRntmcpDJe8je6MQX0D+HOIHJtvcGOVdIY=",
+        "lastModified": 1720045378,
+        "narHash": "sha256-lmE7B+QXw7lWdBu5GQlUABSpzPk3YBb9VbV+IYK5djk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "58268b4d7745f6747be18033e6f10011466ce8d4",
+        "rev": "0a30138c694ab3b048ac300794c2eb599dc40266",
         "type": "github"
       },
       "original": {
@@ -117,7 +117,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-stable": {
+    "nixpkgs": {
       "locked": {
         "lastModified": 1719956923,
         "narHash": "sha256-nNJHJ9kfPdzYsCOlHOnbiiyKjZUW5sWbwx3cakg3/C4=",
@@ -151,11 +151,11 @@
     },
     "root": {
       "inputs": {
-        "firefox-addons-stable": "firefox-addons-stable",
+        "firefox-addons": "firefox-addons",
         "firefox-addons-unstable": "firefox-addons-unstable",
-        "home-manager-stable": "home-manager-stable",
+        "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",
-        "nixpkgs-stable": "nixpkgs-stable",
+        "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
     }

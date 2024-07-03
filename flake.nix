@@ -3,15 +3,15 @@
 
   inputs = {
     # Stable Nixpkgs for your desktop
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     # Unstable Nixpkgs for Orange Pi and specific applications
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Home Manager from stable and unstable
-    home-manager-stable = {
+    home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-unstable = {
       url = "github:nix-community/home-manager";
@@ -19,9 +19,9 @@
     };
 
     # Firefox addons from stable and unstable
-    firefox-addons-stable = {
+    firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons-unstable = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -29,7 +29,7 @@
     };
   };
 
-outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager-stable, home-manager-unstable, ... }@inputs:
+outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, home-manager-unstable, ... }@inputs:
     let
       inherit (self) outputs;
       system = [
@@ -43,7 +43,7 @@ outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager-stable, home-ma
       nixosConfigurations = {
 
 		#Nixos Desktop
-        nixos = nixpkgs-stable.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           system = system;
           modules = [
@@ -57,17 +57,17 @@ outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager-stable, home-ma
         homeConfigurations = {
 
           #Nixos Desktop 
-          "cidr@nixos" = home-manager-stable.lib.homeManagerConfiguration {
-            pkgs = nixpkgs-stable.legacyPackages.x86_64-linux;
+          "cidr@nixos" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
             extraSpecialArgs = {inherit inputs outputs;};
-            modules = [ ./home/home.nix];
+            modules = [ ./home/nixos/home.nix];
            }; 
 
           #Orangepi 
           "cidr@orangepi" = home-manager-unstable.lib.homeManagerConfiguration {
             pkgs = nixpkgs-unstable.legacyPackages.aarch64-linux;         
             extraSpecialArgs = {inherit inputs outputs;};
-            modules = [ ./home/home.nix
+            modules = [ ./home/orangepi/home.nix
             ];
            }; 
 
