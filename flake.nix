@@ -21,33 +21,38 @@
 outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
-      system = "x86_64-linux";
+      system = [
+        "aarch64-linux"
+        "i686-linux"
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"];
     in {
 
       nixosConfigurations = {
 
-
+		#Nixos Desktop
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           system = system;
           modules = [
             ./hosts/nixos/configuration.nix
 
-            home-manager.nixosModules.home-manager {
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.extraSpecialArgs = { inherit inputs outputs;};
-              home-manager.users.cidr = {
-               imports = [
-                 ./home/home.nix 
-                ];
-              }; 
-            }
           ];
+        };
+      };
+
+
+        homeConfigurations = {
+
+          #Nixos Desktop 
+          "cidr@nixos" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            extraSpecialArgs = {inherit inputs outputs;};
+            modules = [ ./home/home.nix];
+           }; 
         };
 
 
-
       };
-    };
 }
