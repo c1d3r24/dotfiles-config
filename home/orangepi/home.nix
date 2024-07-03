@@ -1,5 +1,9 @@
 { pkgs, inputs, ... }:
 
+let
+  pkgs = inputs.nixpkgs-unstable.legacyPackages.${config.system};
+in
+
 {
   imports = [
     ../common/kitty.nix
