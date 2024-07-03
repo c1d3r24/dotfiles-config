@@ -36,7 +36,6 @@
 
       homeConfigurations = {
         "cidr@nixos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
           modules = [ ./home/home.nix ];
         };
       };
