@@ -1,11 +1,10 @@
-{ pkgs, ... }:
+{ inputs, pkgs, config, ... }: {
 
-{
   programs.firefox = {
     enable = true;
     profiles = {
       default = {
-        extensions = with pkgs.inputs.firefox-addons; [
+        extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
           ublock-origin
           bitwarden
           dark-reader

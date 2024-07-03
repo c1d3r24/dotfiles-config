@@ -14,30 +14,34 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
+      inherit (self) outputs;
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
     in {
+
       nixosConfigurations = {
-        # Define your NixOS configurations here
+
+
         nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
           system = system;
           modules = [
             ./hosts/nixos/configuration.nix
+            home-manager.nixosModules.home-manager {
+              home-manager.useUserPackages = true;
+              home-manager.users.cidr.imports = [
+               ./home/home.nix ]; 
+            }
           ];
         };
-      };
 
-      homeConfigurations = {
-        "cidr@nixos" = home-manager.lib.homeManagerConfiguration {
-          modules = [ ./home/home.nix ];
-        };
+
+
       };
     };
 }
