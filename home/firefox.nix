@@ -1,6 +1,7 @@
 { inputs, pkgs, config, ... }: 
 
 let
+  isUnstable = pkgs == inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
   bookmarksFile = /mnt/Files/Tech/Linux/bookmarks.nix;
 in
 {
@@ -26,7 +27,7 @@ in
     };
     profiles = {
       default = {
-        extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+        extensions = with (if isUnstable then inputs.firefox-addons-unstable.pacakges.${pkgs.system} else inputs.firefox-addons-stable.packages.${pkgs.system}); [
           ublock-origin
           bitwarden
           darkreader
