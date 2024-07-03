@@ -1,26 +1,35 @@
 {
-  description = "My NixOS configuration";
+  description = "Dotfiles configuration";
 
   inputs = {
-    # Nix ecosystem
+    # Stable Nixpkgs for your desktop
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
 
+    # Unstable Nixpkgs for Orange Pi and specific applications
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager = {
+    # Home Manager from stable and unstable
+    home-manager-stable = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
-    firefox-addons = {
+    # Firefox addons from stable and unstable
+    firefox-addons-stable = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-
-
+    firefox-addons-unstable = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }@inputs:
+outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager-stable, home-manager-unstable, ... }@inputs:
     let
       inherit (self) outputs;
       system = [
@@ -48,14 +57,14 @@ outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }@inputs:
         homeConfigurations = {
 
           #Nixos Desktop 
-          "cidr@nixos" = home-manager.lib.homeManagerConfiguration {
+          "cidr@nixos" = home-manager-stable.lib.homeManagerConfiguration {
             pkgs = nixpkgs-stable.legacyPackages.x86_64-linux;
             extraSpecialArgs = {inherit inputs outputs;};
             modules = [ ./home/home.nix];
            }; 
 
           #Orangepi 
-          "cidr@orangepi" = home-manager.lib.homeManagerConfiguration {
+          "cidr@orangepi" = home-manager-unstable.lib.homeManagerConfiguration {
             pkgs = nixpkgs-unstable.legacyPackages.aarch64-linux;         
             extraSpecialArgs = {inherit inputs outputs;};
             modules = [ ./home/home.nix
