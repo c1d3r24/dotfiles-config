@@ -33,7 +33,6 @@ in
     kate
     qutebrowser
     vlc
-    tor-browser-bundle-bin
     onlyoffice-bin
     wireshark
     kitty
