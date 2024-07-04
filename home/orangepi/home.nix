@@ -38,7 +38,6 @@ in
     mesa
     libglvnd
     glfw
-    glu
     xorg-server
     xorg-xinit
     xorg-xauth
