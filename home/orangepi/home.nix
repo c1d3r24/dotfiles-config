@@ -7,7 +7,6 @@ in
 {
   imports = [
     ../common/urxvt.nix
-    ../common/qutebrowser.nix
     ../common/firefox.nix
   ];
 
@@ -31,7 +30,6 @@ in
 
   home.packages = with unstablePkgs; [
     kate
-    qutebrowser
     vlc
     wireshark
     fastfetch
