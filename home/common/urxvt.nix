@@ -52,11 +52,11 @@
       "perl-ext-common" = "config-reload,font-size";
       letterSpace = "0";
       lineSpace = "0";
-      geometry = "80x24+0+0";
+      geometry = "80x240+0+0";
       internalBorder = "0";
       cursorBlink = "true";
       cursorUnderline = "false";
-      urgentOnBell = "false"; # Set urgentOnBell to false to remove terminal bell
+      urgentOnBell = "false"; 
     };
   };
 
