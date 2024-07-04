@@ -6,7 +6,7 @@ in
 
 {
   imports = [
-    ../common/kitty.nix
+    ../common/urxvt.nix
     ../common/qutebrowser.nix
     ../common/firefox.nix
   ];
@@ -34,20 +34,6 @@ in
     qutebrowser
     vlc
     wireshark
-    kitty
-    mesa
-    libglvnd
-    glfw
-    xorg-server
-    xorg-xinit
-    xorg-xauth
-    libx11
-    libxext
-    libxrender
-    libxrandr
-    libxi
-    libxcursor
-    libxinerama
   ];
 
   home.sessionVariables = {
