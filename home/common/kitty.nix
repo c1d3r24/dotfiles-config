@@ -13,11 +13,6 @@
 
       enabled_layouts = "grid";
 
-      map shift+up = "move_window up";
-      map shift+left = "move_window left";
-      map shift+right = "move_window right";
-      map shift+down = "move_window down";
-
       background = "#1c2b35";
       foreground = "#d0d3d4";
       cursor = "#c5c8c9";
@@ -43,5 +38,11 @@
       background_opacity = "0.8";
       bell = "none";
     };
+    extraConfig = ''
+      map shift+up move_window up
+      map shift+left move_window left
+      map shift+right move_window right
+      map shift+down move_window down
+    '';
   };
 }
