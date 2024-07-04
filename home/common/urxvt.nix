@@ -3,7 +3,7 @@
 {
   programs.urxvt = {
     enable = true;
-    fonts = [ "xft:Monospace:size=10" ];
+    fonts = [ "xft:Monospace:size=11" ];
     iso14755 = false;
     scroll = {
       bar = {
@@ -21,42 +21,42 @@
     transparent = true;
     shading = 30;
     extraConfig = {
-      foreground = "#c5c8c6";
-      background = "#1d1f21";
-      cursorColor = "#c5c8c6";
+      foreground = "#B0B7C3";
+      background = "#121212";
+      cursorColor = "#B0B7C3";
 
-      color0 = "#282a2e";
-      color8 = "#373b41";
+      color0 = "#1C1C1C";
+      color8 = "#373737";
 
-      color1 = "#a54242";
-      color9 = "#cc6666";
+      color1 = "#D24B5A";
+      color9 = "#FF6F7B";
 
-      color2 = "#8c9440";
-      color10 = "#b5bd68";
+      color2 = "#4BD29D";
+      color10 = "#6FFFC4";
 
-      color3 = "#de935f";
-      color11 = "#f0c674";
+      color3 = "#D2D24B";
+      color11 = "#FFFF6F";
 
-      color4 = "#5f819d";
-      color12 = "#81a2be";
+      color4 = "#4B79D2";
+      color12 = "#6F9FFF";
 
-      color5 = "#85678f";
-      color13 = "#b294bb";
+      color5 = "#794BD2";
+      color13 = "#9F6FFF";
 
-      color6 = "#5e8d87";
-      color14 = "#8abeb7";
+      color6 = "#4BD2D2";
+      color14 = "#6FFFFF";
 
-      color7 = "#707880";
-      color15 = "#c5c8c6";
+      color7 = "#B0B7C3";
+      color15 = "#DCE1E8";
 
       "perl-ext-common" = "config-reload,font-size";
       letterSpace = "0";
       lineSpace = "0";
-      geometry = "80x24+0+0";
+      geometry = "80x240+0+0";
       internalBorder = "0";
       cursorBlink = "true";
       cursorUnderline = "false";
-      urgentOnBell = "false"; # Set urgentOnBell to false to remove terminal bell
+      urgentOnBell = "false"; 
 
       # Added configurations
       inheritPixmap = "true";
