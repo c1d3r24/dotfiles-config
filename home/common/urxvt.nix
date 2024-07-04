@@ -52,8 +52,8 @@
       "perl-ext-common" = "config-reload,font-size";
       letterSpace = "0";
       lineSpace = "0";
-      geometry = "92x24";
-      internalBorder = "10";
+      # geometry = "92x24"; # Removed to test if it's causing issues
+      internalBorder = "0"; # Set to 0 to avoid large margins
       cursorBlink = "true";
       cursorUnderline = "false";
       urgentOnBell = "true";

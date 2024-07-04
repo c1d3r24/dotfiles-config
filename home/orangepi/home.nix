@@ -34,6 +34,7 @@ in
     qutebrowser
     vlc
     wireshark
+    fastfetch
   ];
 
   home.sessionVariables = {
