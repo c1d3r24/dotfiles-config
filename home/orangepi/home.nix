@@ -35,6 +35,20 @@ in
     vlc
     wireshark
     kitty
+    mesa
+    libglvnd
+    glfw
+    glu
+    xorg-server
+    xorg-xinit
+    xorg-xauth
+    libx11
+    libxext
+    libxrender
+    libxrandr
+    libxi
+    libxcursor
+    libxinerama
   ];
 
   home.sessionVariables = {
