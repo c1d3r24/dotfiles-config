@@ -53,7 +53,7 @@
       letterSpace = "0";
       lineSpace = "0";
       geometry = "80x240+0+0";
-      internalBorder = "0";
+      internalBorder = "10";
       cursorBlink = "true";
       cursorUnderline = "false";
       urgentOnBell = "false"; 
