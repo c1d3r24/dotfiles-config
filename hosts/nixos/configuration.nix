@@ -11,7 +11,7 @@
      ../modules/bootloader.nix
     ../modules/networking.nix
     ../modules/i18n.nix
-    ../modules/desktop.nix
+    ../modules/gnome.nix
     ../modules/users.nix
     ../modules/mounts.nix
     ../modules/packages.nix
