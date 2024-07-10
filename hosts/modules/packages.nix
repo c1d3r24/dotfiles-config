@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
+
+  let
+     unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+  in
 
 {
   nixpkgs.config.permittedInsecurePackages = [
@@ -8,6 +12,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
 
   environment.systemPackages = with pkgs; [
     cryptsetup
@@ -36,6 +41,7 @@
     btrbk
     oldversion.obinskit
     oldversion.etcher
+    unstablePkgs.lime3ds
     #GNOME stuff 
     gnome.gnome-tweaks
     hydrapaper
