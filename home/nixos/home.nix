@@ -36,6 +36,7 @@
     steam
     wireshark
     kitty
+    waydroid
   ];
 
   home.sessionVariables = {
