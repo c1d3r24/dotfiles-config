@@ -33,6 +33,11 @@
   #  enable = true;
   #  enable32Bit = true;
   #};
+
+
+  enviroment.extraInit =  ''
+	xset dpms 120
+  ''; 
   
   # Enable OpenGL on 24.05
   hardware.opengl = {
