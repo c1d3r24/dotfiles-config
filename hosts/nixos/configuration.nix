@@ -21,6 +21,7 @@
     ../modules/services/obinskit.nix
     ../modules/services/virtualization.nix
     ../modules/services/bluetooth.nix
+    ../modules/services/syncthing.nix
     ../modules/nvidia.nix
     ];
 
