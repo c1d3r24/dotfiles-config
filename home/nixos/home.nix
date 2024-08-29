@@ -38,7 +38,6 @@
     kitty
     obsidian
     ryujinx
-    syncthing
   ];
 
   home.sessionVariables = {
