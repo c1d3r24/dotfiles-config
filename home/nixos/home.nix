@@ -36,6 +36,9 @@
     steam
     wireshark
     kitty
+    obsidian
+    ryujinx
+    syncthing
   ];
 
   home.sessionVariables = {
